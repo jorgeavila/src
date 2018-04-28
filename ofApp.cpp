@@ -36,6 +36,7 @@ float avgB = 0.0;
 float r = 0.0;
 float g = 0.0;
 float b = 0.0;
+int frameNum  ;
 
 
 void ofApp::setup() {
@@ -54,11 +55,7 @@ void ofApp::update() {
 	}
 
 	if (s == true) {
-	
-	
-	
 
-		int frameNum = ;
 		string seq1;
 		ofDirectory dir2;
 		vector <ofImage> images;
@@ -79,21 +76,23 @@ void ofApp::update() {
 
 		vector <string> result = ofSplitString(dir2.getName(actualV), "+");
 
+////////////////////// this commented code was my first try i try to make a loop inside a loop
+
+
    /* for (int i = 0; i < dir2.size(); i++) {
 		vector <string> result = ofSplitString(dir2.getName(i), "+");*/
 	  	//	actualValue = ;
 	//	cout << dir2.getName(i) << endl;
 		for (ofBuffer::Line it = buffer.getLines().begin(), end = buffer.getLines().end(); it != end; ++it) {
 			string line = *it;
-			//Split line into strings
 			words = ofSplitString(line, ",");
 
 			cout << words[0] << endl;
 			//cout << actualV << endl;
 			cout << result[0] << endl;
 
-			if (words[0] == result[0]) {
-
+		if (words[0] == result[0]) {
+                             
 				imageInProcess.load(dir2.getName(actualV));
 		    	ofSaveImage(imageInProcess, "sorted/""frame" + ofToString(frameNum) + dir2.getName(actualV) + ".jpg");
 				frameNum ++;
@@ -102,7 +101,7 @@ void ofApp::update() {
 
 			}
 
-		////////////////////////  1-0-255  is the last value of the list when it match it runs again the loop with nexgt file
+		////////////////////////  1-0-255  is the last value of the list when it match it runs again the loop with next file
 			if (words[0] == "1-0-255") {
 				actualV ++;
 				//actualV - 1;
